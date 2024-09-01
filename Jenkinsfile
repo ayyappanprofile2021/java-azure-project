@@ -19,7 +19,7 @@ pipeline
          stage('Build Docker Image')
          {
             steps{
-                sh 'sudo docker build -t ayyappanprofile/javaapplication:latest .' 
+                sh 'sudo docker build -t ayyappanprofile/javatestapplication:latest .' 
             }
          }
          stage('Docker Image to Hub')
@@ -30,7 +30,7 @@ pipeline
                          // some block
                   sh 'sudo docker login -u ayyappanprofile -p $DOCKER_HUB_PASS_CODE'
                 }
-                sh 'sudo docker push ayyappanprofile/javaapplication:latest'
+                sh 'sudo docker push ayyappanprofile/javatestapplication:latest'
              }
          }
          
@@ -39,9 +39,7 @@ pipeline
              steps
              {
                  sshagent(['e04e32f9-422e-4c0e-b222-0e24c04f87d6']) {
-                         sh "ssh -o StrictHostKeyChecking=no ubuntu@47.129.207.94 sudo rm -f k8-dep-svc.yml"
                          sh "ssh -o StrictHostKeyChecking=no ubuntu@47.129.207.94 sudo wget https://raw.githubusercontent.com/ayyappanprofile2021/java-azure-project/master/k8-dep-svc.yml"
-                         sh "ssh -o StrictHostKeyChecking=no ubuntu@47.129.207.94 sudo kubectl delete deploy spring-boot-k8s-deployment"
                          sh "ssh -o StrictHostKeyChecking=no ubuntu@47.129.207.94 sudo kubectl apply -f k8-dep-svc.yml"
                     }
              }
