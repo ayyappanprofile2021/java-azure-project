@@ -40,7 +40,7 @@ pipeline
              {
                  sshagent(['dbe5a0ab-35c3-41e1-9884-63fc42b92a5a']) {
                          sh "ssh -o StrictHostKeyChecking=no ubuntu@18.142.180.31 sudo wget https://raw.githubusercontent.com/ayyappanprofile2021/java-azure-project/master/k8-dep-svc.yml"
-                         sh "ssh -o StrictHostKeyChecking=no ubuntu@47.129.207.94 sudo kubectl delete deploy spring-boot-k8s-deployment"
+                         sh "ssh -o StrictHostKeyChecking=no ubuntu@18.142.180.31 sudo kubectl delete deploy spring-boot-k8s-deployment"
                          sh "ssh -o StrictHostKeyChecking=no ubuntu@18.142.180.31 sudo kubectl apply -f k8-dep-svc.yml"
                     }
              }
