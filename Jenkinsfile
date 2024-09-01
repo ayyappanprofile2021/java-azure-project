@@ -38,7 +38,7 @@ pipeline
          {
              steps
              {
-                 sshagent(['e04e32f9-422e-4c0e-b222-0e24c04f87d6']) {
+                 sshagent(['dbe5a0ab-35c3-41e1-9884-63fc42b92a5a']) {
                          sh "ssh -o StrictHostKeyChecking=no ubuntu@18.142.180.31 sudo wget https://raw.githubusercontent.com/ayyappanprofile2021/java-azure-project/master/k8-dep-svc.yml"
                          sh "ssh -o StrictHostKeyChecking=no ubuntu@18.142.180.31 sudo kubectl apply -f k8-dep-svc.yml"
                     }
